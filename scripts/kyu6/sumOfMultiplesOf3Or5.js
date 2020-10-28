@@ -1,6 +1,6 @@
 // https://www.codewars.com/kata/514b92a657cdc65150000006
 const sumOfMultiplesOf3Or5 = function(number) {
-    return sum(multiplesOf3Or5(number).filter(onlyUnique));
+    return multiplesOf3Or5(number).filter(onlyUnique).sum();
 };
 
 const multiplesOf3Or5 = number => multiplesOf3(number).concat(multiplesOf5(number));
@@ -17,6 +17,6 @@ const isMultipleOf = (potentialMultiple, number) => potentialMultiple % number =
 
 const onlyUnique = (value, index, self) => self.indexOf(value) === index;
 
-const sum = array => array.reduce((a, b) => a + b, 0);
+Array.prototype.sum = function() { return this.reduce((a, b) => a + b, 0); }
 
 module.exports = sumOfMultiplesOf3Or5;
